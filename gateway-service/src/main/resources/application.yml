@@ -1,20 +1,35 @@
 server:
   port: 8080
+  error:
+    include-message: always
+#    include-exception: true
 
 management:
   endpoint.gateway.enabled: true
   endpoints.web.exposure.include: gateway
 
+logging:
+  level:
+    org.springframework.cloud.gateway: DEBUG
+
 spring:
   application.name: gateway-service
   cloud:
     gateway:
+      set-status:
+        original-status-header-name: original-http-status
       discovery.locator.enabled: true
       routes:
-        - id: service-user-id
-          uri: lb://service-user
+        - id: user-service-id
+          uri: lb://user-service
           predicates:
             Path=/user/**
+          filters:
+            - AuthFilter
+        - id: auth-service-id
+          uri: lb://auth-service
+          predicates:
+            Path=/auth/**
 
 eureka:
   client:

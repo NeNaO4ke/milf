@@ -6,11 +6,21 @@
 
     <groupId>milf</groupId>
     <artifactId>milf</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
+
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
-    
+
+    <modules>
+        <module>auth-service</module>
+        <module>user-microservice</module>
+        <module>service-discovery</module>
+        <module>config-service</module>
+        <module>gateway-service</module>
+    </modules>
+
 </project>

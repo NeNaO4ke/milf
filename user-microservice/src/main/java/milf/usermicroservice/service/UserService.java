@@ -16,4 +16,9 @@ public class UserService implements UserServiceI{
     public Mono<User> getUserById(String id) {
         return userRepository.getUserById(id);
     }
+
+    @Override
+    public Mono<User> getUserByUsername(String username) {
+        return userRepository.getUserByUsername(username);
+    }
 }
