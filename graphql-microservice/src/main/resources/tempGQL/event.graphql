@@ -1,0 +1,11 @@
+type Subscription {
+    postCreated: PostNUser
+    personalSubscription: Event
+}
+
+type Event {
+    eventType: String
+    body: EventBody
+}
+
+union EventBody = PostNUser | PostLike

@@ -21,6 +21,7 @@
         <module>service-discovery</module>
         <module>config-service</module>
         <module>gateway-service</module>
+        <module>graphql-microservice</module>
     </modules>
 
 </project>

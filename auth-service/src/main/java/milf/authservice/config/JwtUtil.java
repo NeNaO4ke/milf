@@ -41,6 +41,7 @@ public class JwtUtil {
     public String generateToken(UserDTO user) {
         HashMap<String, Object> claims = new HashMap<>();
         claims.put("user", user);
+        claims.put("roles", user.getRoles());
 
         long expirationSecs = Long.parseLong(expiration);
         Date creationDate = new Date();

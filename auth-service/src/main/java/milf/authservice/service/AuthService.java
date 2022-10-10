@@ -16,6 +16,8 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 import java.util.Base64;
+import java.util.List;
+import java.util.Set;
 
 @RequiredArgsConstructor
 @Service
@@ -50,6 +52,13 @@ public class AuthService {
                     .parseClaimsJws(token)
                     .getBody()
                     .get("user", UserDTO.class);
+            List roles = Jwts.parserBuilder()
+                    .setSigningKey(Base64.getEncoder().encodeToString(secret.getBytes()))
+                    .deserializeJsonWith(new JacksonDeserializer(Maps.of("roles", List.class).build()))
+                    .build()
+                    .parseClaimsJws(token)
+                    .getBody()
+                    .get("roles", List.class);
             return Mono.just(user);
 
         }

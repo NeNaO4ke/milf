@@ -1,0 +1,13 @@
+type MetaDto {
+    url: String
+    title: String
+    description: String
+    cover: String
+}
+
+
+
+type PostNUser {
+    user: User
+    post: Post
+}

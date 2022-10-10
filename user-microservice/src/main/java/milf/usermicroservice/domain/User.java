@@ -1,6 +1,7 @@
 package milf.usermicroservice.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -11,6 +12,7 @@ import java.util.Set;
 @Document(collection = "usr")
 @Data
 @AllArgsConstructor
+@JsonIgnoreProperties(value = "password", allowGetters = true)
 public class User {
 
     @Id
@@ -18,7 +20,6 @@ public class User {
 
     private String username;
 
-    @JsonIgnore
     private String password;
 
     private String avatar;
@@ -31,14 +32,13 @@ public class User {
 
     }
 
-    public User(String id, String username){
-        this.id = id;
+    public User(String username, String password){
+        this.id = null;
         this.username = username;
         this.avatar = null;
         this.description = null;
-        this.password = null;
+        this.password = password;
         this.roles = Set.of(Role.USER);
     }
-
 
 }

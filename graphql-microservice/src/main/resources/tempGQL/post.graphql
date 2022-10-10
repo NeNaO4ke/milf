@@ -1,0 +1,20 @@
+
+type Post {
+    id: ID
+    text: String
+    likesCount: Int
+    commentsCount: Int
+    likes: [PostLike]
+    commentIds: [String]
+    isCommentTo: String
+    fileLocations: [String]
+    authorId: String
+    metaDto: MetaDto
+    date: String
+}
+
+
+type PostLike {
+    userId: ID
+    creationTime: String
+}
