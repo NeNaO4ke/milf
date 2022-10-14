@@ -12,6 +12,7 @@
         <option value="$PROJECT_DIR$/auth-service/pom.xml" />
         <option value="$PROJECT_DIR$/graphql-microservice/pom.xml" />
         <option value="$PROJECT_DIR$/post-microservice/pom.xml" />
+        <option value="$PROJECT_DIR$/notification-microservice/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

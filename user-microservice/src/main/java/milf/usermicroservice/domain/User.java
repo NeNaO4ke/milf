@@ -12,7 +12,7 @@ import java.util.Set;
 @Document(collection = "usr")
 @Data
 @AllArgsConstructor
-@JsonIgnoreProperties(value = "password", allowGetters = true)
+//@JsonIgnoreProperties(value = "password", allowGetters = true)
 public class User {
 
     @Id

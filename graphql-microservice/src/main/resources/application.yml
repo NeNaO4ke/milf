@@ -9,6 +9,12 @@ graphql:
 
 spring:
   application.name: graphql-service
+  cloud:
+    stream:
+      bindings:
+        consumer-in-0.destination: postCreated
+      binder:
+        brokers: localhost:9092
 
 eureka:
   client:

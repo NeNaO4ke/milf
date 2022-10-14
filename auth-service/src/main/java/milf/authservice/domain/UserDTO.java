@@ -11,10 +11,11 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonIgnoreProperties(ignoreUnknown = true)
+//@JsonIgnoreProperties(value = "password", allowGetters = true, ignoreUnknown = true)
 public class UserDTO {
     private String id;
     private String username;
+    private String password;
     private String token;
 
     private Set<String> roles;

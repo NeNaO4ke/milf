@@ -29,11 +29,14 @@ public class AuthService {
     @Value("${jwt.secret}")
     private String secret;
 
-    public Mono<ResponseEntity<UserDTO>> signIn(CredentialsDTO credentialsDTO) {
+    public Mono<ResponseEntity<?>> signIn(CredentialsDTO credentialsDTO) {
         return userService.getUserByUsername(credentialsDTO.getUsername())
                 .map(userDTO -> {
-                    userDTO.setToken(jwtUtil.generateToken(userDTO));
-                    return ResponseEntity.ok(userDTO);
+                    if(credentialsDTO.getPassword().equals(userDTO.getPassword())){
+                        userDTO.setToken(jwtUtil.generateToken(userDTO));
+                        return ResponseEntity.ok(userDTO);
+                    }
+                    return ResponseEntity.badRequest().build();
                 }).switchIfEmpty(Mono.just(ResponseEntity.badRequest().build()));
     }
 

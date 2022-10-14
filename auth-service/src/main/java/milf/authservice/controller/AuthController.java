@@ -2,6 +2,7 @@ package milf.authservice.controller;
 
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import milf.authservice.domain.CredentialsDTO;
 import milf.authservice.domain.UserDTO;
 import milf.authservice.exception.AppException;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RequiredArgsConstructor
+@Slf4j
 @RequestMapping("/auth")
 @RestController
 public class AuthController {
@@ -19,11 +21,12 @@ public class AuthController {
 
     @GetMapping("/test")
     public Mono<String> test() {
+        log.error("Ping!");
         return Mono.just("Hello world");
     }
 
     @PostMapping("/login")
-    public Mono<ResponseEntity<UserDTO>> login(@RequestBody CredentialsDTO credentialsDTO) {
+    public Mono<ResponseEntity<?>> login(@RequestBody CredentialsDTO credentialsDTO) {
         return authService.signIn(credentialsDTO);
     }
 

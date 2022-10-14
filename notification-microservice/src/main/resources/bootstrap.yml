@@ -1,16 +1,17 @@
 server:
   port: 0
   servlet:
-    context-path: /auth
+    context-path: /notification
 
 
 spring:
-  application.name: auth-service
-
-
-jwt:
-  secret: fdjsgtolkeworuj435i23jhsfesrhf4isaf4iwelrujweailuhfd34wiuryheuafhkseuhfd,dsruyr3w4irekuahdfeiuwrhfkdsfhniwe4lrhiafhsjkdshfjkeshirfu
-  expiration: 86400
+  application.name: notification-service
+  cloud:
+    stream:
+      binder:
+        brokers: localhost:9092
+    config:
+      uri: http://localhost:8888/config
 
 eureka:
   client:
