@@ -7,3 +7,12 @@ spring:
 logging:
   level:
     reactor.netty.http.client: debug
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

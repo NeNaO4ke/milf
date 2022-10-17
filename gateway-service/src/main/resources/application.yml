@@ -5,9 +5,13 @@ server:
 #    include-exception: true
 
 management:
-  endpoint.gateway.enabled: true
-  endpoints.web.exposure.include: gateway
-
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
@@ -39,11 +43,23 @@ spring:
         - id: graphql-service-id
           uri: lb://graphql-service
           predicates:
-            Path=/graphql
+            Path=/graphql/**
           filters:
             - AuthFilter
+        - id: event-service-id
+          uri: lb://event-service
+          predicates:
+            Path=/event/**
+        - id: admin-service-id
+          uri: lb://admin-service
+          predicates:
+            Path=/admin/**
+          filters:
+            - RewritePath=/admin/(?<segment>.*), /$\{segment}
+
 
 eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka
+

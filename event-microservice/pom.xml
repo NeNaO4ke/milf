@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>milf</groupId>
-    <artifactId>post-microservice</artifactId>
+    <artifactId>event-microservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>post-microservice</name>
-    <description>post-microservice</description>
+    <name>event-microservice</name>
+    <description>event-microservice</description>
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>2021.0.4</spring-cloud.version>
@@ -32,36 +32,19 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+            <artifactId>spring-cloud-starter-bootstrap</artifactId>
         </dependency>
-
-        <!--Reactive Feign Client-->
-        <dependency>
-            <groupId>com.playtika.reactivefeign</groupId>
-            <artifactId>feign-reactor-webclient</artifactId>
-            <version>3.2.6</version>
-        </dependency>
-        <dependency>
-            <groupId>com.playtika.reactivefeign</groupId>
-            <artifactId>feign-reactor-cloud</artifactId>
-            <version>3.2.6</version>
-        </dependency>
-        <dependency>
-            <groupId>com.playtika.reactivefeign</groupId>
-            <artifactId>feign-reactor-spring-configuration</artifactId>
-            <version>3.2.6</version>
-        </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-config</artifactId>
-            <version>3.1.4</version>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-bootstrap</artifactId>
-            <version>3.1.4</version>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream-binder-kafka</artifactId>
         </dependency>
 
         <dependency>
@@ -78,6 +61,13 @@
             <groupId>io.projectreactor</groupId>
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-stream</artifactId>
+            <scope>test</scope>
+            <classifier>test-binder</classifier>
+            <type>test-jar</type>
         </dependency>
     </dependencies>
     <dependencyManagement>

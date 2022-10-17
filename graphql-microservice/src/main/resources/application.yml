@@ -10,9 +10,11 @@ graphql:
 spring:
   application.name: graphql-service
   cloud:
+    config:
+      uri: http://localhost:8888/config
     stream:
       bindings:
-        consumer-in-0.destination: postCreated
+        test-in-0.destination: testQueue
       binder:
         brokers: localhost:9092
 
@@ -28,3 +30,11 @@ logging:
     reactor.netty.http: debug
     graphql.execution.reactive: debug
 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS

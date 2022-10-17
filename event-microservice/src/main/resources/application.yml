@@ -1,0 +1,36 @@
+server:
+  port: 0
+  servlet:
+    context-path: /event
+
+
+spring:
+  application.name: event-service
+  cloud:
+    stream:
+      binder:
+        brokers: localhost:9092
+      kafka:
+        binder:
+          configuration:
+            key.serializer: org.apache.kafka.common.serialization.StringSerializer
+            value.serializer: org.apache.kafka.common.serialization.StringSerializer
+    config:
+      uri: http://localhost:8888/config
+
+eureka:
+  client:
+    registry-fetch-interval-seconds: 1
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${spring.application.instance_id:${random.value}}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: ALWAYS
